@@ -1,0 +1,19 @@
+USE truecar;
+
+CREATE TABLE IF NOT EXISTS vehicle_by_serial_number(
+    serial_number text,
+    vehicle_trim int,
+    year int,
+    make text,
+    model text,
+    trim_name text,
+    PRIMARY KEY ((serial_number), vehicle_trim)
+);
+
+CREATE TABLE IF NOT EXISTS vsn_lookup(
+    prefix text,
+    remainder text,
+    vehicle_trim int,
+    serial_number text,
+    PRIMARY KEY ((prefix), remainder, vehicle_trim)
+);
