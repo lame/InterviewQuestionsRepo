@@ -4,7 +4,6 @@ import sys
 
 from models.connect_to_cluster import Conn
 from models.vehicle_by_serial_number import VehicleBySerialNumber
-from models.vsn_lookup import VSNLookup
 
 
 class CSVReader(object):
@@ -23,7 +22,7 @@ class CSVReader(object):
                 # next(csvfile)  # Needed for CSV's with a header
                 csv_reader = csv.reader(csvfile)
                 for row in csv_reader:
-                    self.call_tables(row)
+                    self.populate_vehicle_by_serial_number(row)
 
         elif os.path.isfile(os.path.abspath(sys.path[0] + '/utils/data/' + file)):
             with open(os.path.abspath(sys.path[0] + '/utils/data/' + file),
@@ -32,14 +31,12 @@ class CSVReader(object):
                 csv_reader = csv.reader(csvfile)
                 for row in csv_reader:
                     print(row)
-                    self.call_tables(row)
-
-    def call_tables(self, row):
-        self.populate_vehicle_by_serial_number(row)
-        self.populate_vsn_lookup(row)
+                    self.populate_vehicle_by_serial_number(row)
 
     def populate_vehicle_by_serial_number(self, row):
         vbsn = VehicleBySerialNumber()
+        vbsn.prefix = row[0][:4]
+        vbsn.remainder = row[0][4:]
         vbsn.serial_number = row[0]
         vbsn.vehicle_trim = row[1]
         vbsn.year = row[2]
@@ -47,11 +44,3 @@ class CSVReader(object):
         vbsn.model = row[4]
         vbsn.trim_name = row[5]
         vbsn.save()
-
-    def populate_vsn_lookup(self, row):
-        vsn_lookup = VSNLookup()
-        vsn_lookup.prefix = row[0][:4]
-        vsn_lookup.remainder = row[0][4:]
-        vsn_lookup.vehicle_trim = row[1]
-        vsn_lookup.serial_number = row[0]
-        vsn_lookup.save()

@@ -1,0 +1,84 @@
+{
+    "type": "cassandra",
+    "cassandra": {
+        "connection": {
+            "hosts": "127.0.0.1",
+            "data_centre": "dc",
+            "username": "cassandra",
+            "password": "cassandra"
+        },
+        "sync": {
+            "batch_size": 20000,
+            "schedule": "00/15***?"
+        },
+        "keyspaces": [
+            {
+                "name": "truecar",
+                "column_families": [
+                    {
+                        "name": "vehicle_by_serial_number",
+                        "primary_key": "serial_number",
+                        "columns": [
+                            {
+                                "name": "serial_number",
+                                "type": "string",
+                                "raw": "true"
+                            },
+                            {
+                                "name": "vehicle_trim",
+                                "type": "integer",
+                                "raw": "true"
+                            },
+                            {
+                                "name": "year",
+                                "type": "integer",
+                                "raw": "true"
+                            },
+                            {
+                                "name": "make",
+                                "type": "string",
+                                "raw": "true"
+                            },
+                            {
+                                "name": "model",
+                                "type": "string",
+                                "raw": "true"
+                            },
+                            {
+                                "name": "trim_name",
+                                "type": "string",
+                                "raw": "true"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "vsn_lookup",
+                        "primary_key": "prefix",
+                        "columns": [
+                            {
+                                "name": "prefix",
+                                "type": "string",
+                                "raw": "true"
+                            },
+                            {
+                                "name": "remainder",
+                                "type": "string",
+                                "raw": "true"
+                            },
+                            {
+                                "name": "vehicle_trim",
+                                "type": "integer",
+                                "raw": "true"
+                            },
+                            {
+                                "name": "serial_number",
+                                "type": "string",
+                                "raw": "true"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
