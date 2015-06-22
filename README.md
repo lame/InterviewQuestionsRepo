@@ -46,3 +46,7 @@ If there are two patterns: "ABCDEF******" and "ABCDEF1*****", the string "ABCDEF
 - Finally, while the VSN input set is relatively small, in a real-world environment the list will be much larger. If your solution would not adequately perform with tens or hundreds of thousands of VSN search patterns, please describe how you would build a solution to handle that in a readme file. The readme should also include any special installation requirements, known issues, areas for improvement, ideas for version 2, etc.
 
 
+## Comments
+
+- Version 1 of the software uses a redimentary search and result aggregation algorithm, version 2 will insted use ElasticSearch and transition away from cassandra die to cassnadra-river problems.
+
