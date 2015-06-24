@@ -1,0 +1,50 @@
+<div ng-controller="SearchVsnController as vm">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="page-header">
+                <center>
+                    <h2>Search for a car by VSN</h2>
+                </center>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="input-group">
+                        <input autofocus="autofocus"
+                               type="text"
+                               class="form-control"
+                               ng-model="vm.data.vsn"
+                               placeholder="Enter Vehicle VSN" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default"
+                                    type="submit"
+                                    ng-click="vm.getMatches(vm.data.vsn)">
+                                Search
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            VSN Matches
+        </div>
+        <div class="panel-body">
+            <p>Cars matching entered VSN</p>
+        </div>
+        <table class="table table-bordered" ng-repeat="match in vm.matches">
+            <tr>
+                <td>
+                    <h3 class="moduletitle">{{ match.year }} {{ match.make }} {{ match.model }}</h3>
+                    <h4>Description</h4>
+                    <span>Trim Name: {{ match.trim_name }}</span><br>
+                    <span>Vehicle Trim: {{ match.vehicle_trim }}</span><br>
+                    <span>Serial Number: {{ match.serial_number }}</span><br>
+                    <hr>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -32,5 +32,15 @@ class VSMResource(Resource):
                     # this number is the new max, start new count
                     result_list = [(ratio, result.serial_number, result.vehicle_trim,
                                     result.year, result.make, result.model, result.trim_name)]
-
-        return result_list
+        dict_list = []
+        for result in result_list:
+            dict_list.append({
+                                'ratio': result[0],
+                                'serial_number': result[1],
+                                'vehicle_trim': result[2],
+                                'year': result[3],
+                                'make': result[4],
+                                'model': result[5],
+                                'trim_name': result[6]
+                             })
+        return dict_list
