@@ -17,14 +17,15 @@ class VSMResource(Resource):
         vsn_prefix = vsn[:4]
         vsn_remainder = vsn[4:]
 
-        result_list = [(0, None, None)]
+        dict_list = []
+        result_list = []
 
         results = self.session.execute(self.get_all_info, (vsn_prefix, ))
 
         for result in results:
             if fnmatch(vsn_remainder, result.remainder.replace('*', '?')):
                 ratio = SequenceMatcher(None, result.remainder, vsn_remainder).quick_ratio()
-                if ratio == result_list[0][0]:
+                if len(result_list) == 0 or ratio == result_list[0][0]:
                     # if the set has the correct max
                     result_list.append((ratio, result.serial_number, result.vehicle_trim,
                                        result.year, result.make, result.model, result.trim_name))
@@ -32,15 +33,16 @@ class VSMResource(Resource):
                     # this number is the new max, start new count
                     result_list = [(ratio, result.serial_number, result.vehicle_trim,
                                     result.year, result.make, result.model, result.trim_name)]
-        dict_list = []
-        for result in result_list:
-            dict_list.append({
-                                'ratio': result[0],
-                                'serial_number': result[1],
-                                'vehicle_trim': result[2],
-                                'year': result[3],
-                                'make': result[4],
-                                'model': result[5],
-                                'trim_name': result[6]
-                             })
+
+        if len(result_list) > 0:
+            for result in result_list:
+                dict_list.append({
+                                    'ratio': result[0],
+                                    'serial_number': result[1],
+                                    'vehicle_trim': result[2],
+                                    'year': result[3],
+                                    'make': result[4],
+                                    'model': result[5],
+                                    'trim_name': result[6]
+                                 })
         return dict_list
