@@ -9,7 +9,7 @@
     .state('search-vsn', {
       url:'/search-vsn',
       templateUrl: 'views/search_vsn.html',
-      controller: 'searchVsnController'
+      controller: 'SearchVsnController'
     })
 
     .state('landing', {
