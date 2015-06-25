@@ -1,6 +1,6 @@
 import os
 
-from flask_restful import Api
+
 from app import app
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -12,4 +12,4 @@ SECRET_KEY = 'Replace_With_SecretKey'
 cassandra_cluster_ip = '127.0.0.1'
 cassandra_default_keyspace = 'truecar'
 
-api = Api(app)
+
