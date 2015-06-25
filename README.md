@@ -126,3 +126,6 @@ If there are two patterns: "ABCDEF******" and "ABCDEF1*****", the string "ABCDEF
 
 - Version 1 of the software uses a redimentary search and result aggregation algorithm, version 2 will insted use ElasticSearch and transition away from cassandra die to cassnadra-river problems.
 
+- The current search algorithm and database schema are created from provided data where the first 4 of the VSN are always required, should that change for other vehicles, the schema and some logic would have to change
+
+- This solution could be scaled to production size and provide a truly distributed database and quick lookups with locality considerations. All that would need to change are the cluster IP's in config.py and the possible addition of cassandra username and password for protected data stores.
