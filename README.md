@@ -119,7 +119,7 @@ If there are two patterns: "ABCDEF******" and "ABCDEF1*****", the string "ABCDEF
         ```bash
         grunt serve
         ```
-    6. Local web server is now active
+    6. Local web server is now active, navigate to the website on the test server at ```http://localhost:9000/app/index.html```
 
 
 ## Comments
