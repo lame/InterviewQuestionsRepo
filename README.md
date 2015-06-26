@@ -59,66 +59,90 @@ If there are two patterns: "ABCDEF******" and "ABCDEF1*****", the string "ABCDEF
             * ```apt-get update; sudo apt-get install cassandra```
         * Please note these cassandra distributions are meant for testing only, for documentation on a full cassandra instillation please see [Apache Cassandra Documentation](https://wiki.apache.org/cassandra/GettingStarted) or [DataStax Community Documentation](http://planetcassandra.org/cassandra/)
     2. Start cassandra in terminal as a background process as follows:
-        ```bash
+
+        ```
         cassandra
         ```
+
         * The process has launched when 'state jump to normal', press enter to resume in your terminal
     3. Start CQLSH and run migrations:
         * Naviget to ```TrueCarInterview/API/utils/migrations```
         * Create keyspace and table schema:
+
             ```sql
             cqlsh -f create_truecar_keyspace.cql;
             cqlsh -f create_lookup_tables.csv
             ```
+
         * Cassnadra db is now completed, feel free to look around by envoking cqlsh and typing the following:
+
             ```sql
             DESCRIBE TABLE truecar.vehicle_by_serial_number;
             ```
+
     3. Create Python3 Environment:
         * Make sure you have Python3.4 installed, if not visit [Python installation documentation](https://www.python.org/downloads/) and download the latest version of Python3
         * Naviget to ```TrueCarInterview/API```
         * Create a Python3 virtualenvironment:
-            ```bash
+
+            ```
             python3 -m venv env
             ```
+
         * Start the virtual environment with:
-            ```bash
+
+            ```
             source env/bin/activate
             ```
+
         * Install application requirements to that virtual machine:
-            ```bash
+
+            ```
             pip3.4 install -r requirements.txt
             ```
+
         * Invoke data import within the Python3 Repl:
+
             ```python
-            >>> from utils.data.csv_reader import CSVReader
-            >>> CSVReader()
+            from utils.data.csv_reader import CSVReader
+            CSVReader()
             ```
+
         * Your table should now be populated with data
    4. Start the application in the foreground as follows:
-        ```bash
+
+        ```
         python3 run.py
         ```
+
 3. Spin up the Client:
     1. Make sure appropriate packages are installed:
         * Please see [NPM Download and Instillation Guide](https://nodejs.org) for instillation help with NPM
         * Install Bower:
-            ```bash
+
+            ```
             npm install bower #sudo may be necessary depending on environment
             ```
+
     2. In a new terminal, navigate to ```TrueCarInterview/Client```
     3. Install all NPM dependencies:
-        ```bash
+
+        ```
         npm install #sudo may be necessary depending on environment
         ```
+
     4. Install all Bower dependencies:
-        ```bash
+
+        ```
         bower install
         ```
+
     5. Launch test server:
-        ```bash
+
+        ```
         grunt serve
         ```
+
     6. Local web server is now active, navigate to the website on the test server at ```http://localhost:9000/app/index.html```
 
 
