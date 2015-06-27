@@ -6,4 +6,6 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 cors = CORS(app)
-api = Api(app)
+
+from app import api
+
