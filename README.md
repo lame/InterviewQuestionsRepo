@@ -1,4 +1,4 @@
-# True Car Interview Challenge
+# Interview Challenge
 
 ## Description
 
@@ -50,7 +50,7 @@ If there are two patterns: "ABCDEF******" and "ABCDEF1*****", the string "ABCDEF
 
 ## Running the Application
 
-1. Clone the rpository from [GitHub](https://github.com/rkk09c/TrueCarInterview)
+1. Clone the rpository from GitHub
 2. Spin up API:
     1. Install cassandra and CQLSH
         * For OSX:
@@ -66,23 +66,23 @@ If there are two patterns: "ABCDEF******" and "ABCDEF1*****", the string "ABCDEF
 
         * The process has launched when 'state jump to normal', press enter to resume in your terminal
     3. Start CQLSH and run migrations:
-        * Naviget to ```TrueCarInterview/API/utils/migrations```
+        * Naviget to ```Interview/API/utils/migrations```
         * Create keyspace and table schema:
 
             ```sql
-            cqlsh -f create_truecar_keyspace.cql;
+            cqlsh -f create_tc_keyspace.cql;
             cqlsh -f create_lookup_tables.csv
             ```
 
         * Cassnadra db is now completed, feel free to look around by envoking cqlsh and typing the following:
 
             ```sql
-            DESCRIBE TABLE truecar.vehicle_by_serial_number;
+            DESCRIBE TABLE tc.vehicle_by_serial_number;
             ```
 
     3. Create Python3 Environment:
         * Make sure you have Python3.4 installed, if not visit [Python installation documentation](https://www.python.org/downloads/) and download the latest version of Python3
-        * Naviget to ```TrueCarInterview/API```
+        * Naviget to ```Interview/API```
         * Create a Python3 virtualenvironment:
 
             ```
@@ -124,7 +124,7 @@ If there are two patterns: "ABCDEF******" and "ABCDEF1*****", the string "ABCDEF
             npm install bower #sudo may be necessary depending on environment
             ```
 
-    2. In a new terminal, navigate to ```TrueCarInterview/Client```
+    2. In a new terminal, navigate to ```Interview/Client```
     3. Install all NPM dependencies:
 
         ```
